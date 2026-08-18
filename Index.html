@@ -3,12 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>InfoAnimes</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: white;
+        }
+
+        header {
+            background: #15151c;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #292933;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff3b5c;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #ff3b5c;
+        }
+
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #171721, #24121b);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #ff3b5c;
+        }
+
+        .hero p {
+            color: #bdbdc7;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .search {
+            width: 90%;
+            max-width: 500px;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 30px;
+            background: #24242e;
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .anime-card {
+            background: #17171f;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #292933;
+            transition: transform 0.2s;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .poster {
+            height: 220px;
+            background: linear-gradient(135deg, #292938, #4a1f2c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .anime-info {
+            padding: 14px;
+        }
+
+        .anime-info h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .anime-info p {
+            color: #9999a5;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #15151c;
+            color: #888894;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            nav a {
+                font-size: 12px;
+                margin-left: 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Bienvenue sur InfoAnimes</h1>
-    <p>Ton espace dédié aux animés.</p>
+    <header>
+        <div class="logo">InfoAnimes</div>
+
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Animés</a>
+            <a href="#">Nouveautés</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Bienvenue sur <span>InfoAnimes</span></h1>
+
+        <p>
+            Découvre les informations sur tes animés préférés.
+        </p>
+
+        <input
+            class="search"
+            type="text"
+            placeholder="Rechercher un animé..."
+        >
+    </section>
+
+    <main class="container">
+
+        <h2 class="section-title">🔥 Animés populaires</h2>
+
+        <div class="anime-grid">
+
+            <div class="anime-card">
+                <div class="poster">NARUTO</div>
+
+                <div class="anime-info">
+                    <h3>Naruto</h3>
+                    <p>Action • Aventure</p>
+                </div>
+            </div>
+
+            <div class="anime-card">
+                <div class="poster">ONE PIECE</div>
+
+                <div class="anime-info">
+                    <h3>One Piece</h3>
+                    <p>Action • Aventure</p>
+                </div>
+            </div>
+
+            <div class="anime-card">
+                <div class="poster">DEMON SLAYER</div>
+
+                <div class="anime-info">
+                    <h3>Demon Slayer</h3>
+                    <p>Action • Fantastique</p>
+                </div>
+            </div>
+
+            <div class="anime-card">
+                <div class="poster">AVATAR</div>
+
+                <div class="anime-info">
+                    <h3>Avatar</h3>
+                    <p>Aventure • Fantastique</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 InfoAnimes — Tous droits réservés.</p>
+    </footer>
 
 </body>
 </html>
