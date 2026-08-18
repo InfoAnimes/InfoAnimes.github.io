@@ -1,238 +1,369 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>InfoAnimes</title>
+<title>InfoAnimes - Découvrez vos animés préférés</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b0b0f;
-            color: white;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b10;
+    color: white;
+}
 
-        header {
-            background: #15151c;
-            padding: 18px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #292933;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+/* HEADER */
+header {
+    background: #12121a;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #272733;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff3b5c;
-        }
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff3658;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-            font-size: 14px;
-        }
+nav {
+    display: flex;
+    gap: 22px;
+}
 
-        nav a:hover {
-            color: #ff3b5c;
-        }
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-        .hero {
-            padding: 60px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #171721, #24121b);
-        }
+nav a:hover {
+    color: #ff3658;
+}
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
+/* HERO */
+.hero {
+    min-height: 420px;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, #3a1624 0%, #18121b 40%, #0b0b10 80%);
+}
 
-        .hero h1 span {
-            color: #ff3b5c;
-        }
+.hero-content {
+    max-width: 750px;
+}
 
-        .hero p {
-            color: #bdbdc7;
-            font-size: 17px;
-            margin-bottom: 25px;
-        }
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 18px;
+}
 
-        .search {
-            width: 90%;
-            max-width: 500px;
-            padding: 14px 18px;
-            border: none;
-            border-radius: 30px;
-            background: #24242e;
-            color: white;
-            outline: none;
-            font-size: 15px;
-        }
+.hero h1 span {
+    color: #ff3658;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+.hero p {
+    color: #b9b9c4;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
 
-        .section-title {
-            font-size: 25px;
-            margin-bottom: 25px;
-        }
+.search-box {
+    display: flex;
+    max-width: 550px;
+    margin: auto;
+    background: #20202a;
+    border: 1px solid #353542;
+    border-radius: 30px;
+    overflow: hidden;
+}
 
-        .anime-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-        }
+.search-box input {
+    flex: 1;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+}
 
-        .anime-card {
-            background: #17171f;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #292933;
-            transition: transform 0.2s;
-        }
+.search-box button {
+    padding: 0 25px;
+    border: none;
+    background: #ff3658;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .anime-card:hover {
-            transform: translateY(-5px);
-        }
+/* CONTENT */
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 50px 20px;
+}
 
-        .poster {
-            height: 220px;
-            background: linear-gradient(135deg, #292938, #4a1f2c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ddd;
-            text-align: center;
-            padding: 10px;
-        }
+.section-title {
+    font-size: 26px;
+    margin-bottom: 25px;
+}
 
-        .anime-info {
-            padding: 14px;
-        }
+.section-title span {
+    color: #ff3658;
+}
 
-        .anime-info h3 {
-            font-size: 17px;
-            margin-bottom: 7px;
-        }
+/* CARDS */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
-        .anime-info p {
-            color: #9999a5;
-            font-size: 13px;
-        }
+.anime-card {
+    background: #15151e;
+    border: 1px solid #272733;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.25s;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: #15151c;
-            color: #888894;
-            margin-top: 30px;
-        }
+.anime-card:hover {
+    transform: translateY(-6px);
+    border-color: #ff3658;
+}
 
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 32px;
-            }
+.poster {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(145deg, #282838, #471c2c);
+}
 
-            nav a {
-                font-size: 12px;
-                margin-left: 8px;
-            }
-        }
-    </style>
+.info {
+    padding: 15px;
+}
+
+.info h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.info p {
+    color: #9696a3;
+    font-size: 13px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 40px;
+    padding: 35px 20px;
+    text-align: center;
+    background: #12121a;
+    border-top: 1px solid #272733;
+    color: #888894;
+    font-size: 13px;
+}
+
+footer strong {
+    color: #ff3658;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+
+    header {
+        padding: 16px 20px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 380px;
+    }
+
+    .hero h1 {
+        font-size: 31px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .poster {
+        height: 190px;
+        font-size: 16px;
+    }
+
+    .info {
+        padding: 11px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">InfoAnimes</div>
+<header>
 
-        <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Animés</a>
-            <a href="#">Nouveautés</a>
-        </nav>
-    </header>
+    <div class="logo">InfoAnimes</div>
 
-    <section class="hero">
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Animés</a>
+        <a href="#">Nouveautés</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
         <h1>Bienvenue sur <span>InfoAnimes</span></h1>
 
         <p>
-            Découvre les informations sur tes animés préférés.
+            Découvre les informations, histoires, saisons et actualités
+            de tes animés préférés.
         </p>
 
-        <input
-            class="search"
-            type="text"
-            placeholder="Rechercher un animé..."
-        >
-    </section>
+        <div class="search-box">
 
-    <main class="container">
+            <input
+                type="text"
+                placeholder="Rechercher un animé..."
+            >
 
-        <h2 class="section-title">🔥 Animés populaires</h2>
+            <button>Rechercher</button>
 
-        <div class="anime-grid">
+        </div>
 
-            <div class="anime-card">
-                <div class="poster">NARUTO</div>
+    </div>
 
-                <div class="anime-info">
-                    <h3>Naruto</h3>
-                    <p>Action • Aventure</p>
-                </div>
+</section>
+
+<main class="container">
+
+    <h2 class="section-title">
+        🔥 Animés <span>populaires</span>
+    </h2>
+
+    <div class="anime-grid">
+
+        <div class="anime-card">
+
+            <div class="poster">
+                NARUTO
             </div>
 
-            <div class="anime-card">
-                <div class="poster">ONE PIECE</div>
-
-                <div class="anime-info">
-                    <h3>One Piece</h3>
-                    <p>Action • Aventure</p>
-                </div>
-            </div>
-
-            <div class="anime-card">
-                <div class="poster">DEMON SLAYER</div>
-
-                <div class="anime-info">
-                    <h3>Demon Slayer</h3>
-                    <p>Action • Fantastique</p>
-                </div>
-            </div>
-
-            <div class="anime-card">
-                <div class="poster">AVATAR</div>
-
-                <div class="anime-info">
-                    <h3>Avatar</h3>
-                    <p>Aventure • Fantastique</p>
-                </div>
+            <div class="info">
+                <h3>Naruto</h3>
+                <p>Action • Aventure • Ninja</p>
             </div>
 
         </div>
 
-    </main>
+        <div class="anime-card">
 
-    <footer>
-        <p>© 2026 InfoAnimes — Tous droits réservés.</p>
-    </footer>
+            <div class="poster">
+                ONE PIECE
+            </div>
+
+            <div class="info">
+                <h3>One Piece</h3>
+                <p>Action • Aventure • Pirates</p>
+            </div>
+
+        </div>
+
+        <div class="anime-card">
+
+            <div class="poster">
+                DEMON SLAYER
+            </div>
+
+            <div class="info">
+                <h3>Demon Slayer</h3>
+                <p>Action • Fantastique</p>
+            </div>
+
+        </div>
+
+        <div class="anime-card">
+
+            <div class="poster">
+                AVATAR
+            </div>
+
+            <div class="info">
+                <h3>Avatar</h3>
+                <p>Aventure • Fantastique</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+
+    © 2026 <strong>InfoAnimes</strong> —
+    Tous droits réservés.
+
+</footer>
 
 </body>
 </html>
