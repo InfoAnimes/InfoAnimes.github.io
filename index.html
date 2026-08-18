@@ -4,37 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>InfoAnimes - Découvrez vos animés préférés</title>
+<title>InfoAnimes — Animés, saisons et informations</title>
 
 <style>
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #0b0b10;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #08090d;
     color: white;
 }
 
-/* HEADER */
 header {
-    background: #12121a;
-    padding: 18px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #272733;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    background: rgba(10,10,15,.96);
+    border-bottom: 1px solid #252631;
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 800;
     color: #ff3658;
 }
 
@@ -53,25 +52,34 @@ nav a:hover {
     color: #ff3658;
 }
 
-/* HERO */
 .hero {
-    min-height: 420px;
-    padding: 80px 20px;
+    min-height: 520px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding: 70px 7%;
     background:
-        radial-gradient(circle at center, #3a1624 0%, #18121b 40%, #0b0b10 80%);
+        linear-gradient(90deg, #08090d 10%, rgba(8,9,13,.75) 45%, rgba(8,9,13,.25)),
+        linear-gradient(135deg, #3c1725, #151827 60%, #08090d);
 }
 
 .hero-content {
-    max-width: 750px;
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #ff3658;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 18px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 18px;
+    font-size: 55px;
+    line-height: 1.05;
+    margin-bottom: 20px;
 }
 
 .hero h1 span {
@@ -79,79 +87,89 @@ nav a:hover {
 }
 
 .hero p {
-    color: #b9b9c4;
+    color: #c3c3cc;
     font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    line-height: 1.7;
+    margin-bottom: 28px;
 }
 
-.search-box {
+.hero-buttons {
     display: flex;
-    max-width: 550px;
-    margin: auto;
-    background: #20202a;
-    border: 1px solid #353542;
-    border-radius: 30px;
-    overflow: hidden;
+    gap: 12px;
 }
 
-.search-box input {
-    flex: 1;
-    padding: 16px 20px;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    font-size: 15px;
+.btn {
+    padding: 13px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
 }
 
-.search-box button {
-    padding: 0 25px;
-    border: none;
+.btn-primary {
     background: #ff3658;
     color: white;
-    font-weight: bold;
-    cursor: pointer;
 }
 
-/* CONTENT */
+.btn-secondary {
+    background: #292a34;
+    color: white;
+}
+
 .container {
-    max-width: 1150px;
+    max-width: 1200px;
     margin: auto;
     padding: 50px 20px;
 }
 
+.section {
+    margin-bottom: 55px;
+}
+
 .section-title {
-    font-size: 26px;
-    margin-bottom: 25px;
+    font-size: 27px;
+    margin-bottom: 24px;
 }
 
 .section-title span {
     color: #ff3658;
 }
 
-/* CARDS */
+.search {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 35px;
+    padding: 16px 20px;
+    border-radius: 30px;
+    border: 1px solid #30313d;
+    background: #171820;
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
 .anime-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
 }
 
-.anime-card {
-    background: #15151e;
-    border: 1px solid #272733;
-    border-radius: 12px;
+.card {
+    background: #12131a;
+    border: 1px solid #252631;
+    border-radius: 10px;
     overflow: hidden;
-    transition: 0.25s;
+    transition: .25s;
 }
 
-.anime-card:hover {
-    transform: translateY(-6px);
+.card:hover {
+    transform: translateY(-7px);
     border-color: #ff3658;
 }
 
 .poster {
-    height: 250px;
+    height: 285px;
+    background: linear-gradient(145deg, #30313d, #551e31);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -159,66 +177,77 @@ nav a:hover {
     padding: 15px;
     font-size: 20px;
     font-weight: bold;
-    background: linear-gradient(145deg, #282838, #471c2c);
 }
 
-.info {
-    padding: 15px;
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.info h3 {
-    font-size: 17px;
+.card-info {
+    padding: 13px;
+}
+
+.card-info h3 {
+    font-size: 16px;
     margin-bottom: 7px;
 }
 
-.info p {
-    color: #9696a3;
+.card-info p {
+    color: #90919c;
+    font-size: 12px;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.category {
+    padding: 10px 17px;
+    border-radius: 20px;
+    background: #191a23;
+    border: 1px solid #292a35;
+    color: #ddd;
     font-size: 13px;
 }
 
-/* FOOTER */
+.category:hover {
+    background: #ff3658;
+    border-color: #ff3658;
+}
+
 footer {
-    margin-top: 40px;
-    padding: 35px 20px;
+    padding: 40px 20px;
+    background: #111219;
     text-align: center;
-    background: #12121a;
-    border-top: 1px solid #272733;
-    color: #888894;
-    font-size: 13px;
+    color: #858692;
+    border-top: 1px solid #252631;
 }
 
 footer strong {
     color: #ff3658;
 }
 
-/* MOBILE */
-@media (max-width: 800px) {
-
-    header {
-        padding: 16px 20px;
-    }
-
-    nav {
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 12px;
+@media(max-width: 950px) {
+    .anime-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .hero h1 {
-        font-size: 36px;
-    }
-
-    .anime-grid {
-        grid-template-columns: repeat(2, 1fr);
+        font-size: 45px;
     }
 }
 
-@media (max-width: 480px) {
+@media(max-width: 650px) {
+    header {
+        padding: 15px 18px;
+    }
 
-    .logo {
-        font-size: 21px;
+    nav {
+        gap: 10px;
     }
 
     nav a {
@@ -226,11 +255,12 @@ footer strong {
     }
 
     .hero {
-        min-height: 380px;
+        min-height: 470px;
+        padding: 60px 20px;
     }
 
     .hero h1 {
-        font-size: 31px;
+        font-size: 36px;
     }
 
     .hero p {
@@ -243,12 +273,11 @@ footer strong {
     }
 
     .poster {
-        height: 190px;
-        font-size: 16px;
+        height: 220px;
     }
 
-    .info {
-        padding: 11px;
+    .section-title {
+        font-size: 23px;
     }
 }
 </style>
@@ -272,22 +301,26 @@ footer strong {
 
     <div class="hero-content">
 
-        <h1>Bienvenue sur <span>InfoAnimes</span></h1>
+        <div class="badge">BIENVENUE SUR INFOANIMES</div>
+
+        <h1>
+            Découvre ton prochain
+            <span>animé préféré.</span>
+        </h1>
 
         <p>
-            Découvre les informations, histoires, saisons et actualités
-            de tes animés préférés.
+            Retrouvez des informations sur les animés,
+            leurs histoires, saisons, personnages et bien plus encore.
         </p>
 
-        <div class="search-box">
+        <div class="hero-buttons">
+            <a href="#populaires" class="btn btn-primary">
+                Découvrir les animés
+            </a>
 
-            <input
-                type="text"
-                placeholder="Rechercher un animé..."
-            >
-
-            <button>Rechercher</button>
-
+            <a href="#categories" class="btn btn-secondary">
+                Catégories
+            </a>
         </div>
 
     </div>
@@ -296,74 +329,141 @@ footer strong {
 
 <main class="container">
 
-    <h2 class="section-title">
-        🔥 Animés <span>populaires</span>
-    </h2>
+    <section class="section">
 
-    <div class="anime-grid">
+        <h2 class="section-title">
+            🔎 Rechercher un <span>animé</span>
+        </h2>
 
-        <div class="anime-card">
+        <input
+            id="searchInput"
+            class="search"
+            type="text"
+            placeholder="Exemple : Naruto, One Piece..."
+        >
 
-            <div class="poster">
-                NARUTO
+    </section>
+
+    <section class="section" id="populaires">
+
+        <h2 class="section-title">
+            🔥 Animés <span>populaires</span>
+        </h2>
+
+        <div class="anime-grid" id="animeGrid">
+
+            <div class="card">
+                <div class="poster">
+                    <img src="https://placehold.co/400x600/181923/ffffff?text=Naruto" alt="Naruto">
+                </div>
+                <div class="card-info">
+                    <h3>Naruto</h3>
+                    <p>Action • Aventure • Ninja</p>
+                </div>
             </div>
 
-            <div class="info">
-                <h3>Naruto</h3>
-                <p>Action • Aventure • Ninja</p>
+            <div class="card">
+                <div class="poster">
+                    <img src="https://placehold.co/400x600/181923/ffffff?text=One+Piece" alt="One Piece">
+                </div>
+                <div class="card-info">
+                    <h3>One Piece</h3>
+                    <p>Action • Aventure • Pirates</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="poster">
+                    <img src="https://placehold.co/400x600/181923/ffffff?text=Demon+Slayer" alt="Demon Slayer">
+                </div>
+                <div class="card-info">
+                    <h3>Demon Slayer</h3>
+                    <p>Action • Fantastique</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="poster">
+                    <img src="https://placehold.co/400x600/181923/ffffff?text=Avatar" alt="Avatar">
+                </div>
+                <div class="card-info">
+                    <h3>Avatar</h3>
+                    <p>Aventure • Fantastique</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="poster">
+                    <img src="https://placehold.co/400x600/181923/ffffff?text=Dragon+Ball" alt="Dragon Ball">
+                </div>
+                <div class="card-info">
+                    <h3>Dragon Ball</h3>
+                    <p>Action • Combat • Aventure</p>
+                </div>
             </div>
 
         </div>
 
-        <div class="anime-card">
+    </section>
 
-            <div class="poster">
-                ONE PIECE
-            </div>
+    <section class="section" id="categories">
 
-            <div class="info">
-                <h3>One Piece</h3>
-                <p>Action • Aventure • Pirates</p>
-            </div>
+        <h2 class="section-title">
+            📚 <span>Catégories</span>
+        </h2>
 
-        </div>
+        <div class="categories">
 
-        <div class="anime-card">
-
-            <div class="poster">
-                DEMON SLAYER
-            </div>
-
-            <div class="info">
-                <h3>Demon Slayer</h3>
-                <p>Action • Fantastique</p>
-            </div>
+            <div class="category">Action</div>
+            <div class="category">Aventure</div>
+            <div class="category">Fantastique</div>
+            <div class="category">Comédie</div>
+            <div class="category">Drame</div>
+            <div class="category">Science-fiction</div>
+            <div class="category">Sport</div>
 
         </div>
 
-        <div class="anime-card">
-
-            <div class="poster">
-                AVATAR
-            </div>
-
-            <div class="info">
-                <h3>Avatar</h3>
-                <p>Aventure • Fantastique</p>
-            </div>
-
-        </div>
-
-    </div>
+    </section>
 
 </main>
 
 <footer>
 
-    © 2026 <strong>InfoAnimes</strong> —
-    Tous droits réservés.
+    <p>
+        © 2026 <strong>InfoAnimes</strong> —
+        Découvrez, explorez et apprenez.
+    </p>
 
 </footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("input", function () {
+
+    const search = this.value.toLowerCase();
+
+    cards.forEach(function(card) {
+
+        const title = card
+            .querySelector("h3")
+            .textContent
+            .toLowerCase();
+
+        if (title.includes(search)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
